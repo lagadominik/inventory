@@ -22,5 +22,3 @@ Thumbs.db
 # IDE
 .vscode/settings.json
 *.swp
-backend/.env
-backend/db.sqlite3
