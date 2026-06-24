@@ -47,9 +47,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.discord',  # provider Discord
     'items',
     'users',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -148,3 +150,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Nasz własny model użytkownika zamiast domyślnego
 AUTH_USER_MODEL = 'users.User'
+
+# CORS — zezwól frontendowi na dostęp do API
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+]
+CORS_ALLOW_CREDENTIALS = True  # wymagane dla ciasteczek sesji
