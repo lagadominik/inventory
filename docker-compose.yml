@@ -1,0 +1,27 @@
+services:
+
+  # Serwis 1: Baza danych PostgreSQL
+  db:
+    image: postgres:16          # gotowy obraz z Docker Hub, nie musisz instalować PostgreSQL
+    restart: unless-stopped
+    env_file: .env              # czyta POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD
+    volumes:
+      - postgres_data:/var/lib/postgresql/data   # dane bazy przeżywają restart kontenera
+    ports:
+      - "5432:5432"             # port lokalny:port w kontenerze
+
+  # Serwis 2: Backend Django
+  backend:
+    build: ./backend            # zbuduje obraz z pliku backend/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./backend:/app          # twoje pliki = pliki w kontenerze (live reload)
+    ports:
+      - "8000:8000"             # Django będzie dostępny na localhost:8000
+    depends_on:
+      - db                      # Django startuje dopiero gdy baza jest gotowa
+    command: python manage.py runserver 0.0.0.0:8000
+
+volumes:
+  postgres_data:                # nazwany volumen — Docker zarządza nim sam

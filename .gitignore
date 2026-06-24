@@ -1,0 +1,25 @@
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Django
+backend/media/
+backend/staticfiles/
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Systemy operacyjne
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+*.swp
+backend/.env
