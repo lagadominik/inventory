@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.discord',  # provider Discord
+    'items',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +145,6 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Nasz własny model użytkownika zamiast domyślnego
+AUTH_USER_MODEL = 'users.User'
