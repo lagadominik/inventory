@@ -24,6 +24,7 @@ export interface Item {
   responsible_unit: string | null
   photo_url: string | null
   location: Location | null
+  home_location: Location | null
   changelog: ChangeLog[]
   created_at: string
   updated_at: string

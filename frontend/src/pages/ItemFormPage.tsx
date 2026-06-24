@@ -16,6 +16,7 @@ export default function ItemFormPage() {
     description: '',
     responsible_unit: '',
     location_id: '' as string | number,
+    home_location_id: '' as string | number,
   })
   const [error, setError] = useState('')
 
@@ -42,6 +43,7 @@ export default function ItemFormPage() {
         description: item.description ?? '',
         responsible_unit: item.responsible_unit ?? '',
         location_id: item.location?.id ?? '',
+        home_location_id: item.home_location?.id ?? '',
       })
     }
   }, [item])
@@ -51,6 +53,7 @@ export default function ItemFormPage() {
       const payload = {
         ...formData,
         location_id: formData.location_id === '' ? null : Number(formData.location_id),
+        home_location_id: formData.home_location_id === '' ? null : Number(formData.home_location_id),
       }
       return isEdit ? updateItem(id!, payload) : createItem(payload)
     },
@@ -119,6 +122,23 @@ export default function ItemFormPage() {
             style={{ display: 'block', width: '100%', padding: '0.5rem', marginTop: 4 }}
           >
             <option value="">— brak lokalizacji —</option>
+            {locations?.map(loc => (
+              <option key={loc.id} value={loc.id}>
+                {loc.name}{loc.exact_location ? ` / ${loc.exact_location}` : ''}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label>
+          Domyślna lokalizacja (home)
+          <select
+            name="home_location_id"
+            value={formData.home_location_id}
+            onChange={handleChange}
+            style={{ display: 'block', width: '100%', padding: '0.5rem', marginTop: 4 }}
+          >
+            <option value="">— brak —</option>
             {locations?.map(loc => (
               <option key={loc.id} value={loc.id}>
                 {loc.name}{loc.exact_location ? ` / ${loc.exact_location}` : ''}

@@ -51,6 +51,14 @@ class Item(models.Model):
         blank=True,
         related_name='items'
     )
+    home_location = models.ForeignKey(
+    Location,
+    on_delete=models.SET_NULL,
+    null=True,
+    blank=True,
+    related_name='home_items',
+    help_text="Domyślna lokalizacja do której przedmiot powinien wracać"
+)
     created_at = models.DateTimeField(auto_now_add=True)  # ustawiane automatycznie przy tworzeniu
     updated_at = models.DateTimeField(auto_now=True)      # aktualizowane automatycznie przy każdej zmianie
 

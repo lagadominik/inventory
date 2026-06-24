@@ -46,14 +46,16 @@ export default function ItemDetailPage() {
           </button>
         </div>
       </div>
-
+      
       {/* Dane przedmiotu */}
       <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem' }}>
         <tbody>
           <Row label="ID" value={item.id} />
           <Row label="Kategoria" value={item.category} />
-          <Row label="Lokalizacja" value={item.location ? item.location.name : '—'} />
-          <Row label="Dokładne miejsce" value={item.location?.exact_location ?? '—'} />
+          <Row label="Aktualna lokalizacja" value={item.location ? item.location.name : '—'} />
+          <Row label="Aktualne miejsce" value={item.location?.exact_location ?? '—'} />
+          <Row label="Domyślna lokalizacja" value={item.home_location ? item.home_location.name : '—'} />
+          <Row label="Domyślne miejsce" value={item.home_location?.exact_location ?? '—'} />
           <Row label="Jednostka odpowiedzialna" value={item.responsible_unit ?? '—'} />
           <Row label="Opis" value={item.description ?? '—'} />
           <Row label="Dodano" value={new Date(item.created_at).toLocaleString('pl-PL')} />

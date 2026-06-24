@@ -28,6 +28,14 @@ class ItemSerializer(serializers.ModelSerializer):
         required=False,
         allow_null=True
     )
+    home_location = LocationSerializer(read_only=True)        # ← dodaj
+    home_location_id = serializers.PrimaryKeyRelatedField(    # ← dodaj
+        queryset=Location.objects.all(),
+        source='home_location',
+        write_only=True,
+        required=False,
+        allow_null=True
+    )
     # Historia zmian zagnieżdżona w przedmiocie
     changelog = ChangeLogSerializer(many=True, read_only=True)
 

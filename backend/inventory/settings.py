@@ -142,7 +142,7 @@ AUTHENTICATION_BACKENDS = [
 
 SOCIALACCOUNT_PROVIDERS = {
     'discord': {
-        'SCOPE': ['identify', 'email'],
+        'SCOPE': ['identify', 'email', 'guilds', 'guilds.members.read'],
     }
 }
 
