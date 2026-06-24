@@ -156,3 +156,11 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
 ]
 CORS_ALLOW_CREDENTIALS = True  # wymagane dla ciasteczek sesji
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:5173',
+]
+
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = False  # JavaScript musi móc odczytać token
+SESSION_COOKIE_SAMESITE = 'Lax'
