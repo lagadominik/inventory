@@ -1,0 +1,14 @@
+[
+  {
+    "model": "socialaccount.socialapp",
+    "pk": 1,
+    "fields": {
+      "provider": "discord",
+      "name": "Discord",
+      "client_id": "DISCORD_CLIENT_ID_PLACEHOLDER",
+      "secret": "DISCORD_CLIENT_SECRET_PLACEHOLDER",
+      "key": "",
+      "sites": [1]
+    }
+  }
+]
